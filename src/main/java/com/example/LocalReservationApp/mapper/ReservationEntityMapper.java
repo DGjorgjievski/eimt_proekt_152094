@@ -11,7 +11,21 @@ public interface ReservationEntityMapper {
 
     ReservationEntityMapper MAPPER = Mappers.getMapper(ReservationEntityMapper.class);
 
-    ReservationModel toModel(ReservationEntity reservationEntity);
+    default ReservationModel toModel(ReservationEntity reservationEntity) {
+        return ReservationModel.builder()
+                               .userId(reservationEntity.getUserId())
+                               .tableId(reservationEntity.getTableId())
+                               .dateTime(reservationEntity.getDateTime())
+                               .isConfirmed(reservationEntity.getIsConfirmed())
+                               .build();
+    }
 
-    ReservationDto toDto(ReservationModel reservationModel);
+    default ReservationDto toDto(ReservationModel reservationModel) {
+        return ReservationDto.builder()
+                             .userId(reservationModel.getUserId())
+                             .tableId(reservationModel.getTableId())
+                             .dateTime(reservationModel.getDateTime())
+                             .isConfirmed(reservationModel.getIsConfirmed())
+                             .build();
+    }
 }

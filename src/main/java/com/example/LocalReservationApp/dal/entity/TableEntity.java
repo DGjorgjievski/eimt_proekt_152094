@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "table")
+@Table(name = "table_entity")
 public class TableEntity {
 
     @Id
@@ -27,5 +27,5 @@ public class TableEntity {
     private Integer chairNumber;
 
     @Column
-    private Integer localId;
+    private Long localId;
 }

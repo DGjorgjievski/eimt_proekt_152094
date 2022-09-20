@@ -12,5 +12,5 @@ public class TableModel {
 
     private Integer chairNumber;
 
-    private Integer localId;
+    private Long localId;
 }

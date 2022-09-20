@@ -8,8 +8,6 @@ import com.example.LocalReservationApp.dto.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.Optional;
-
 @Mapper
 public interface UserEntityMapper {
 

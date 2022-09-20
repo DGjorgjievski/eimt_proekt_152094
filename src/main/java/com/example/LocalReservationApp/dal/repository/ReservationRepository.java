@@ -9,4 +9,6 @@ public interface ReservationRepository {
     ReservationEntity save(ReservationEntity reservationEntity);
 
     List<ReservationEntity> findAll();
+
+    List<ReservationEntity> findAllReservationsForUser(Long userId);
 }

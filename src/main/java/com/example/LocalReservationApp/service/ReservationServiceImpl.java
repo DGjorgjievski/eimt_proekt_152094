@@ -1,5 +1,6 @@
 package com.example.LocalReservationApp.service;
 
+import com.example.LocalReservationApp.dal.entity.ReservationEntity;
 import com.example.LocalReservationApp.dal.repository.ReservationRepository;
 import com.example.LocalReservationApp.domain.ReservationModel;
 import com.example.LocalReservationApp.mapper.ReservationEntityMapper;
@@ -21,5 +22,13 @@ public class ReservationServiceImpl implements ReservationService {
                                     .stream()
                                     .map(ReservationEntityMapper.MAPPER::toModel)
                                     .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationModel> findAllReservationsForUser(Long userId) {
+        List<ReservationEntity> reservationEntities = reservationRepository.findAllReservationsForUser(userId);
+        return reservationEntities.stream()
+                                  .map(ReservationEntityMapper.MAPPER::toModel)
+                                  .collect(Collectors.toList());
     }
 }

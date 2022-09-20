@@ -21,3 +21,20 @@ CREATE TABLE IF NOT EXISTS user_table
 
 INSERT INTO user_table (id, name, sur_name, user_name, password, points, is_manager) VALUES (nextval('user_seq'), 'Tom', 'Stoic', 'tomStoic', 'pass', 10.00, false);
 INSERT INTO user_table (id, name, sur_name, user_name, password, points, is_manager) VALUES (nextval('user_seq'), 'Lexi', 'Stevens', 'lexi', 'dog', 20.00, false);
+
+create sequence IF NOT EXISTS table_seq;
+
+CREATE TABLE IF NOT EXISTS table_entity
+(id BIGINT NOT NULL,
+ id_number INTEGER,
+ chair_number INTEGER,
+ local_id BIGINT);
+
+INSERT INTO table_entity (id, id_number, chair_number, local_id) VALUES (nextval('table_seq'), 1, 5, 1);
+INSERT INTO table_entity (id, id_number, chair_number, local_id) VALUES (nextval('table_seq'), 2, 7, 2);
+
+create sequence IF NOT EXISTS reservation_seq;
+
+CREATE TABLE IF NOT EXISTS reservation (id BIGINT NOT NULL, user_id BIGINT, table_id BIGINT, date_time DATETIME, is_confirmed BOOLEAN);
+INSERT INTO reservation (id, user_id, table_id, date_time, is_confirmed) VALUES (nextval('reservation_seq'), 1, 1, now(), true);
+INSERT INTO reservation (id, user_id, table_id, date_time, is_confirmed) VALUES (nextval('reservation_seq'), 2, 2, now(), true);

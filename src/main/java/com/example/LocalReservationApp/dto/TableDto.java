@@ -12,5 +12,5 @@ public class TableDto {
 
     private Integer chairNumber;
 
-    private Integer localId;
+    private Long localId;
 }

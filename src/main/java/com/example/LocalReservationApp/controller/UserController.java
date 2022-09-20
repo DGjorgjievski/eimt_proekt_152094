@@ -1,9 +1,14 @@
 package com.example.LocalReservationApp.controller;
 
+import com.example.LocalReservationApp.domain.ReservationModel;
 import com.example.LocalReservationApp.domain.UserModel;
+import com.example.LocalReservationApp.dto.ReservationDto;
 import com.example.LocalReservationApp.dto.UserDto;
+import com.example.LocalReservationApp.mapper.ReservationEntityMapper;
 import com.example.LocalReservationApp.mapper.UserEntityMapper;
+import com.example.LocalReservationApp.service.ReservationService;
 import com.example.LocalReservationApp.service.UserService;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -22,6 +27,8 @@ public class UserController {
 
     private final UserService userService;
 
+    private final ReservationService reservationService;
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> findAll() {
@@ -37,8 +44,15 @@ public class UserController {
         userService.save(userModel);
     }
 
-//    @GetMapping("/me")
-//    public UserDto findAuthenticatedCustomer() {
-//        return UserEntityMapper.MAPPER.toDto(securityService.getAuthenticatedUser());
-//    }
+    //    @GetMapping("/me")
+    //    public UserDto findAuthenticatedCustomer() {
+    //        return UserEntityMapper.MAPPER.toDto(securityService.getAuthenticatedUser());
+    //    }
+    @GetMapping("/{userId}/reservations")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReservationDto> findAllReservationsForUser(@PathVariable(name = "userId") @NotNull Long userId) {
+        List<ReservationModel> reservationModels = reservationService.findAllReservationsForUser(userId);
+        return reservationModels.stream().map(ReservationEntityMapper.MAPPER::toDto).collect(Collectors.toList());
+    }
+
 }

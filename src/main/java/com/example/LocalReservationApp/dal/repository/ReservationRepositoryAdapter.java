@@ -23,4 +23,9 @@ public class ReservationRepositoryAdapter implements ReservationRepository{
     public List<ReservationEntity> findAll() {
         return reservationJpaRepository.findAll();
     }
+
+    @Override
+    public List<ReservationEntity> findAllReservationsForUser(Long userId) {
+        return reservationJpaRepository.findAllReservationsForUser(userId);
+    }
 }
