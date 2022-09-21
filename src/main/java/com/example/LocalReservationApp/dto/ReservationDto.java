@@ -12,7 +12,9 @@ public class ReservationDto {
 
     private Long userId;
 
-    private Long tableId;
+    private  String localName;
+
+    private Integer numberOfTables;
 
     private LocalDateTime dateTime;
 

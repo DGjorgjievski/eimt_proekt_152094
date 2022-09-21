@@ -25,7 +25,10 @@ public class ReservationEntity {
     private Long userId;
 
     @Column
-    private Long tableId;
+    private String localName;
+
+    @Column
+    private Integer numberOfTables;
 
     @Column
     private LocalDateTime dateTime;

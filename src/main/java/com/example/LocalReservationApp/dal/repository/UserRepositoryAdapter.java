@@ -26,7 +26,11 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findByUsername(String username) {
-        return userJpaRepository.findByUsername(username);
+    public Optional<UserEntity> findById(Long id) {
+        return userJpaRepository.findById(id);
+    }
+    @Override
+    public Optional<UserEntity> checkIfUserExists(String username, String password) {
+        return userJpaRepository.checkIfUserExists(username, password);
     }
 }

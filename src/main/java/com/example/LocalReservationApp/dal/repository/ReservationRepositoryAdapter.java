@@ -6,11 +6,12 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 @Service
 @AllArgsConstructor
-public class ReservationRepositoryAdapter implements ReservationRepository{
+public class ReservationRepositoryAdapter implements ReservationRepository {
 
     private final ReservationJpaRepository reservationJpaRepository;
 
@@ -27,5 +28,20 @@ public class ReservationRepositoryAdapter implements ReservationRepository{
     @Override
     public List<ReservationEntity> findAllReservationsForUser(Long userId) {
         return reservationJpaRepository.findAllReservationsForUser(userId);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        reservationJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public void confirmReservation(Long id) {
+        reservationJpaRepository.confirmReservation(id);
+    }
+
+    @Override
+    public Optional<ReservationEntity> findById(Long id) {
+        return reservationJpaRepository.findById(id);
     }
 }

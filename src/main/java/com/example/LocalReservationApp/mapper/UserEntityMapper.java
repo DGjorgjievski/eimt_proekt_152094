@@ -8,6 +8,8 @@ import com.example.LocalReservationApp.dto.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.Optional;
+
 @Mapper
 public interface UserEntityMapper {
 
@@ -43,5 +45,16 @@ public interface UserEntityMapper {
                       .isManager(userModel.getIsManager())
                       .userName(userModel.getUserName())
                       .build();
+    }
+
+    default UserModel fromEntity(Optional<UserEntity> userEntity) {
+        return UserModel.builder()
+                        .name(userEntity.get().getName())
+                        .surName(userEntity.get().getSurName())
+                        .points(userEntity.get().getPoints())
+                        .isManager(userEntity.get().getIsManager())
+                        .password(userEntity.get().getPassword())
+                        .userName(userEntity.get().getUserName())
+                        .build();
     }
 }

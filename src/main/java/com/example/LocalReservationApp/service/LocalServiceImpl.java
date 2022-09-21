@@ -3,7 +3,6 @@ package com.example.LocalReservationApp.service;
 import com.example.LocalReservationApp.dal.entity.LocalEntity;
 import com.example.LocalReservationApp.dal.repository.LocalRepository;
 import com.example.LocalReservationApp.domain.LocalModel;
-import com.example.LocalReservationApp.exceptions.IdNotFound;
 import com.example.LocalReservationApp.mapper.LocalEntityMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

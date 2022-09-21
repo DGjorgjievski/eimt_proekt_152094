@@ -35,6 +35,6 @@ INSERT INTO table_entity (id, id_number, chair_number, local_id) VALUES (nextval
 
 create sequence IF NOT EXISTS reservation_seq;
 
-CREATE TABLE IF NOT EXISTS reservation (id BIGINT NOT NULL, user_id BIGINT, table_id BIGINT, date_time DATETIME, is_confirmed BOOLEAN);
-INSERT INTO reservation (id, user_id, table_id, date_time, is_confirmed) VALUES (nextval('reservation_seq'), 1, 1, now(), true);
-INSERT INTO reservation (id, user_id, table_id, date_time, is_confirmed) VALUES (nextval('reservation_seq'), 2, 2, now(), true);
+CREATE TABLE IF NOT EXISTS reservation (id BIGINT NOT NULL, user_id BIGINT, local_name VARCHAR(255) UNIQUE, number_of_tables INTEGER, date_time DATETIME, is_confirmed BOOLEAN);
+INSERT INTO reservation (id, user_id, local_name, number_of_tables , date_time, is_confirmed) VALUES (nextval('reservation_seq'), 1, 'Vox',6, now(), false);
+INSERT INTO reservation (id, user_id, local_name, number_of_tables, date_time, is_confirmed) VALUES (nextval('reservation_seq'), 2, 'Cube', 9, now(), false);

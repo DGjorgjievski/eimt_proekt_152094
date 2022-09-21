@@ -1,7 +1,6 @@
 package com.example.LocalReservationApp.service;
 
 import com.example.LocalReservationApp.domain.LocalModel;
-import com.example.LocalReservationApp.exceptions.IdNotFound;
 
 import java.util.List;
 

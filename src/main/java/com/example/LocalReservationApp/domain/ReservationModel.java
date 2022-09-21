@@ -12,7 +12,9 @@ public class ReservationModel {
 
     private Long userId;
 
-    private Long tableId;
+    private  String localName;
+
+    private Integer numberOfTables;
 
     private LocalDateTime dateTime;
 

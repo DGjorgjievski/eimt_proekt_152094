@@ -15,7 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -37,22 +39,30 @@ public class UserController {
                           .map(UserEntityMapper.MAPPER::toDto)
                           .collect(Collectors.toList());
     }
-
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.OK)
     public void save(@RequestBody UserModel userModel) {
         userService.save(userModel);
     }
 
-    //    @GetMapping("/me")
-    //    public UserDto findAuthenticatedCustomer() {
-    //        return UserEntityMapper.MAPPER.toDto(securityService.getAuthenticatedUser());
-    //    }
+    @GetMapping("/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto findById(@PathVariable(name = "userId") @NotNull Long userId) {
+        return UserEntityMapper.MAPPER.toDto(userService.findById(userId));
+    }
+
     @GetMapping("/{userId}/reservations")
     @ResponseStatus(HttpStatus.OK)
     public List<ReservationDto> findAllReservationsForUser(@PathVariable(name = "userId") @NotNull Long userId) {
         List<ReservationModel> reservationModels = reservationService.findAllReservationsForUser(userId);
-        return reservationModels.stream().map(ReservationEntityMapper.MAPPER::toDto).collect(Collectors.toList());
+        return reservationModels.stream()
+                                .map(ReservationEntityMapper.MAPPER::toDto)
+                                .collect(Collectors.toList());
+    }
+    @GetMapping("/check")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto checkIfUserExists(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
+        return UserEntityMapper.MAPPER.toDto(userService.checkIfUserExists(username,password));
     }
 
 }

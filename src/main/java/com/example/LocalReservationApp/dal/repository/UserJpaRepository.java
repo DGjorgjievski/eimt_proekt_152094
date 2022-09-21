@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
 
-    @Query(value = "select * from user_table where user_name like :username", nativeQuery = true)
-    Optional<UserEntity> findByUsername(String username);
+    @Query(value = "select * from user_table where user_name = :username and password = :password", nativeQuery = true)
+    Optional<UserEntity> checkIfUserExists(String username, String password);
 }
