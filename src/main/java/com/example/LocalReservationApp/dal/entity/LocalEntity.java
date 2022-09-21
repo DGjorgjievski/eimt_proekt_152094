@@ -28,4 +28,7 @@ public class LocalEntity {
 
     @Column
     private Integer totalSpaces;
+
+    @Column
+    private String localImage;
 }

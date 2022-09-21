@@ -17,6 +17,7 @@ public interface UserEntityMapper {
 
     default UserModel toModel(UserEntity userEntity) {
         return UserModel.builder()
+                        .id(userEntity.getId())
                         .name(userEntity.getName())
                         .surName(userEntity.getSurName())
                         .points(userEntity.getPoints())
@@ -28,6 +29,7 @@ public interface UserEntityMapper {
 
     default UserEntity toEntity(UserModel userModel) {
         return UserEntity.builder()
+                         .id(userModel.getId())
                          .name(userModel.getName())
                          .surName(userModel.getSurName())
                          .points(userModel.getPoints())
@@ -39,6 +41,7 @@ public interface UserEntityMapper {
 
     default UserDto toDto(UserModel userModel) {
         return UserDto.builder()
+                      .id(userModel.getId())
                       .name(userModel.getName())
                       .surName(userModel.getSurName())
                       .points(userModel.getPoints())
@@ -49,12 +52,20 @@ public interface UserEntityMapper {
 
     default UserModel fromEntity(Optional<UserEntity> userEntity) {
         return UserModel.builder()
-                        .name(userEntity.get().getName())
-                        .surName(userEntity.get().getSurName())
-                        .points(userEntity.get().getPoints())
-                        .isManager(userEntity.get().getIsManager())
-                        .password(userEntity.get().getPassword())
-                        .userName(userEntity.get().getUserName())
+                        .id(userEntity.get()
+                                      .getId())
+                        .name(userEntity.get()
+                                        .getName())
+                        .surName(userEntity.get()
+                                           .getSurName())
+                        .points(userEntity.get()
+                                          .getPoints())
+                        .isManager(userEntity.get()
+                                             .getIsManager())
+                        .password(userEntity.get()
+                                            .getPassword())
+                        .userName(userEntity.get()
+                                            .getUserName())
                         .build();
     }
 }

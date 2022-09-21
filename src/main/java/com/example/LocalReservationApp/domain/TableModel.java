@@ -8,6 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 public class TableModel {
 
+    private Long id;
+
     private Integer idNumber;
 
     private Integer chairNumber;

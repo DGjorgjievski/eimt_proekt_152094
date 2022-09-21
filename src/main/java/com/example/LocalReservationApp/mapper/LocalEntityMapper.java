@@ -13,17 +13,21 @@ public interface LocalEntityMapper {
 
     default LocalModel toModel(LocalEntity localEntity) {
         return LocalModel.builder()
+                         .id(localEntity.getId())
                          .name(localEntity.getName())
                          .location(localEntity.getLocation())
                          .totalSpaces(localEntity.getTotalSpaces())
+                         .localImage(localEntity.getLocalImage())
                          .build();
     }
 
     default LocalDto toDto(LocalModel localModel) {
         return LocalDto.builder()
+                       .id(localModel.getId())
                        .name(localModel.getName())
                        .location(localModel.getLocation())
                        .totalSpaces(localModel.getTotalSpaces())
+                       .localImage(localModel.getLocalImage())
                        .build();
     }
 }
