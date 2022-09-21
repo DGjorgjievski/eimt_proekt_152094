@@ -21,12 +21,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-//	implementation 'org.springframework.boot:spring-boot-starter-security:2.7.3'
-//	implementation 'org.springframework.security:spring-security-core:3.0.2.RELEASE'
-//	implementation 'org.springframework.security:spring-security-jwt:1.0.9.RELEASE'
-//	implementation 'io.jsonwebtoken:jjwt:0.9.1'
-//	implementation 'org.springframework.security:spring-security-crypto:5.7.3'
-
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation "org.mapstruct:mapstruct:1.5.0.RC1"
 	annotationProcessor "org.mapstruct:mapstruct-processor:1.5.0.RC1"
 
