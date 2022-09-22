@@ -31,7 +31,7 @@ const useStyles = makeStyles(() =>
     },
     imageContainer: {
       height: "auto",
-      maxWidth: "300px",
+      maxWidth: "150px",
       width: "100%",
     },
     tableItemContent: {

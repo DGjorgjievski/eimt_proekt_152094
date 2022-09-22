@@ -28,7 +28,7 @@ const useStyles = makeStyles(() =>
 export const Home = () => {
   const classes = useStyles();
   return (
-    <Box>
+    <Box style={{ padding: "0 10% 0 10%" }}>
       <Box className={classes.mainSection}>
         <Typography variant="h5">List of registered locals</Typography>
       </Box>

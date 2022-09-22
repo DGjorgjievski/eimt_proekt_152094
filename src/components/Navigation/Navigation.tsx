@@ -36,6 +36,13 @@ const useStyles = makeStyles(() =>
 );
 
 export const Navigation = () => {
+  const tempUserName = localStorage.getItem("userName");
+  const clearLocalStorage = () => {
+    localStorage.setItem("userID", "");
+    localStorage.setItem("userName", "");
+    localStorage.setItem("userEmail", "");
+    localStorage.setItem("points", "");
+  };
   const classes = useStyles();
   return (
     <Box className={classes.menuContainer}>
@@ -49,15 +56,23 @@ export const Navigation = () => {
           ></img>
         </Box>
       </Link>
-      <Box className={classes.navLinks}>
-        <Link href="/user" className="col6">
-          {/* name of the logged in user */}
-          <Typography variant="h6">User name</Typography>
-        </Link>
-        <Link href="/logout" className={classes.col6}>
-          <Typography variant="h6">logout</Typography>
-        </Link>
-      </Box>
+      {tempUserName != "" ? (
+        <Box className={classes.navLinks}>
+          <Link href="/user" className="col6">
+            {/* name of the logged in user */}
+            <Typography variant="h6">{tempUserName}</Typography>
+          </Link>
+          <Link
+            href="/login"
+            className={classes.col6}
+            onClick={() => clearLocalStorage()}
+          >
+            <Typography variant="h6">logout</Typography>
+          </Link>
+        </Box>
+      ) : (
+        <Box></Box>
+      )}
     </Box>
   );
 };
