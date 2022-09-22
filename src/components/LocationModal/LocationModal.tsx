@@ -88,7 +88,6 @@ export const LocationModal = (props: ILocationModal) => {
       dateTime: currentDate,
       isConfirmed: false,
     };
-
     makeReservation(formData);
 
     // DISPATCH FUNCTION

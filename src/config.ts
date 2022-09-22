@@ -6,4 +6,4 @@ export type LocationType = {
   totalSpaces: number;
 };
 
-export const API = "http://localhost:8080/api";
+export const API = new URL("http://localhost:8080/api");

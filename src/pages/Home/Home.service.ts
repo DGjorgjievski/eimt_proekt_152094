@@ -4,8 +4,8 @@ import { API } from "../../config";
 
 export const getLocals = async () => {
   try {
-    const url = new URL(`${API}/locals`);
-    const response = await axios.get(`${url}`);
+    var url = `${API}/locals`;
+    const response = await axios.get(url);
     return response.data;
   } catch (error: any) {
     return null;
@@ -13,15 +13,14 @@ export const getLocals = async () => {
 };
 
 export const makeReservation = async (data: any) => {
-  console.log("DATA", data);
   try {
-    const url = new URL(`${API}/save`);
-    const jsonData = JSON.stringify(data);
-    const response = await axios.post(`${url}`, {
-      jsonData,
+    var url = `${API}/reservations/save`;
+    // const jsonData = JSON.stringify(data);
+    // console.log("RESPONSE", jsonData);
+    const response = await axios.post(url, {
+      ...data,
     });
-
-    console.log("RESPONSE", response);
+    return response;
   } catch (e: any) {
     console.log("ERROR", e);
   }
