@@ -58,3 +58,40 @@ export const confirmReservation = async (data: any) => {
     console.log("ERROR", e);
   }
 };
+
+export const login = async (data: any) => {
+  try {
+    var url = `${API}/users/check?username=${data.username}&password=${data.password}`;
+    const response = await axios.get(url, {
+      ...data,
+    }).then((res) => {
+      if (res != null) {
+        if(res.data.id != null)
+        {
+          localStorage.setItem("userID", res.data.id);
+          localStorage.setItem("userName", res.data.name + res.data.surName);
+          localStorage.setItem("userEmail", res.data.id);
+          localStorage.setItem("points", res.data.points);
+        }
+        else{
+          return null;
+        }
+      }
+    });
+  } catch (e: any) {
+    console.log("ERROR", e);
+  }
+};
+
+export const register = async (data: any) => {
+  try {
+    var url = `${API}/users/save`;
+    const response = await axios.post(url, {
+      ...data,
+    });
+    return response.status;
+  } catch (e: any) {
+    console.log("ERROR", e);
+  }
+};
+

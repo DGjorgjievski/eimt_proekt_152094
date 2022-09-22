@@ -14,5 +14,12 @@ export type UserReservation = {
   dateTime: string;
   isConfirmed: boolean;
 }
+export type UserInfo = {
+  id: number;
+  name: string;
+  userName: string;
+  points: number;
+  isManager: boolean;
+}
 
 export const API = new URL("http://localhost:8080/api");
