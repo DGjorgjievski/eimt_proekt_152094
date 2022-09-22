@@ -56,7 +56,7 @@ export const Login = () => {
   };
 
   return (
-    <Box>
+    <Box style={{ padding: "0 10% 0 10%" }}>
       <FormContext {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
@@ -92,7 +92,7 @@ export const Login = () => {
               style={{ color: "blue", marginRight: "15px" }}
             >
               <Link
-                href="/login"
+                href="/register"
                 className="col6"
                 style={{ textDecoration: "none" }}
               >

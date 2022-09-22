@@ -16,42 +16,55 @@ const useStyles = makeStyles(() =>
     contentContainer: {
       marginTop: "40px",
     },
+    userHeader: {
+      padding: "10px 0 10px 0",
+      marginBottom: "25px",
+      borderBottom: "1px solid #ebebeb",
+    },
   })
 );
 
 export const User = () => {
-
   const [isVisible, setIsVisible] = useState(false);
-  const [userReservation, setuserReservation] = useState<UserReservation | null>(
-    null
-  );
+  const [userReservation, setuserReservation] =
+    useState<UserReservation | null>(null);
   const [retrievedData, setRetrievedData] = useState<any>(null);
 
   useEffect(() => {
     getUserReservations().then((res) => setRetrievedData(res));
-    console.log(retrievedData);
   }, []);
 
   const handleChanges = () => {
+    setRetrievedData(null);
   };
+  useEffect(() => {
+    getUserReservations().then((res) => setRetrievedData(res));
+  }, [retrievedData]);
   const classes = useStyles();
+  const userName = localStorage.getItem("userName");
+  const userPoints = localStorage.getItem("points");
   return (
-    <Box className={classes.aboutContainer}>
-      <Box>
-        <Typography variant="h5">User name</Typography>
-        <Typography variant="h6">User points</Typography>
+    <Box className={classes.aboutContainer} style={{ padding: "0 10% 0 10%" }}>
+      <Box className={classes.userHeader}>
+        <Typography variant="h5">User: {userName}</Typography>
+        <Typography variant="h6">Points: {userPoints}</Typography>
       </Box>
       <Box>
         {!!retrievedData &&
-        retrievedData.map((userReservation: any) => (
-          <ReservationItem
-            LocalName={userReservation.localName}
-            dateTime={userReservation.dateTime}
-            id={userReservation.id}
-            confirmed={userReservation.isConfirmed}
-            handleChanges={handleChanges}
-          ></ReservationItem>
-        ))}
+          retrievedData.map((userReservation: any) => (
+            <ReservationItem
+              LocalName={userReservation.localName}
+              dateTime={
+                userReservation.dateTime.split("T")[0] +
+                " " +
+                userReservation.dateTime.split("T")[1].split(".")[0]
+              }
+              id={userReservation.id}
+              confirmed={userReservation.isConfirmed}
+              numberOfTables={userReservation.numberOfTables}
+              handleChanges={handleChanges}
+            ></ReservationItem>
+          ))}
       </Box>
     </Box>
   );

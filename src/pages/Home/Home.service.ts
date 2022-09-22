@@ -69,8 +69,8 @@ export const login = async (data: any) => {
         if(res.data.id != null)
         {
           localStorage.setItem("userID", res.data.id);
-          localStorage.setItem("userName", res.data.name + res.data.surName);
-          localStorage.setItem("userEmail", res.data.id);
+          localStorage.setItem("userName", res.data.name + " " + res.data.surName);
+          localStorage.setItem("userEmail", res.data.userName);
           localStorage.setItem("points", res.data.points);
         }
         else{

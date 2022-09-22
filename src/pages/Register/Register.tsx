@@ -62,7 +62,7 @@ export const Register = () => {
   };
 
   return (
-    <Box>
+    <Box style={{ padding: "0 10% 0 10%" }}>
       <FormContext {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
@@ -126,7 +126,12 @@ export const Register = () => {
               </Link>
             </Button>
             <Button variant="contained" type="submit" color="success">
-              Register
+              <Link
+                href="/login"
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                REGISTER
+              </Link>
             </Button>
           </Box>
         </form>

@@ -8,13 +8,17 @@ import {
   Button,
 } from "@mui/material";
 import { Box, createStyles, makeStyles } from "@material-ui/core";
-import { deleteReservation, confirmReservation } from "../../pages/Home/Home.service";
+import {
+  deleteReservation,
+  confirmReservation,
+} from "../../pages/Home/Home.service";
 
 interface ICard {
   LocalName: string;
   dateTime: string;
   id: number;
   confirmed: boolean;
+  numberOfTables: number;
   handleChanges: () => void;
 }
 
@@ -48,30 +52,30 @@ export const ReservationItem = (props: ICard) => {
   const [confirm, setConfirm] = useState<number>();
 
   const handleReservation = (type: any) => {
-      //0 -delete; 1-confirm
-      const formData = {
-        id: props.id
-      };
+    //0 -delete; 1-confirm
+    const formData = {
+      id: props.id,
+    };
 
-      if(type == 0)
-      {
-        deleteReservation(formData);
-      }
-      else if (type == 1)
-      {
-        confirmReservation(formData);
-      }
-      props.handleChanges();
+    if (type == 0) {
+      deleteReservation(formData);
+    } else if (type == 1) {
+      confirmReservation(formData);
+    }
+    props.handleChanges();
   };
 
   return (
     <Box className={classes.tableItemContainer}>
       <Box className={classes.tableItemContent}>
         <Typography gutterBottom variant="h5" component="div">
-          {props.LocalName}
+          Plase of reservation: {props.LocalName}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {props.dateTime}
+          Date & Time of reservation: {props.dateTime}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Number of tables: {props.numberOfTables}
         </Typography>
       </Box>
       <Button
