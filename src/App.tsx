@@ -36,7 +36,7 @@ function App() {
       <Navigation />
       {userID === "" ? (
         <Switch>
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
         </Switch>
       ) : (
