@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import React, { useEffect, useState } from "react";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { login } from "../Home/Home.service";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -38,6 +39,8 @@ const useStyles = makeStyles(() =>
 );
 
 export const Login = () => {
+  let history = useHistory();
+  var link = null;
   const classes = useStyles();
   const [userName, setUserName] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -52,7 +55,8 @@ export const Login = () => {
       username: userName,
       password: password,
     };
-    login(formData);
+    link = login(formData);
+    history.push("/home"); // this will redirect
   };
 
   return (
@@ -100,13 +104,7 @@ export const Login = () => {
               </Link>
             </Button>
             <Button variant="contained" type="submit" color="success">
-              <Link
-                href="/home"
-                className="col6"
-                style={{ textDecoration: "none", color: "#fff" }}
-              >
-                LOGIN
-              </Link>
+              LOGIN
             </Button>
           </Box>
         </form>

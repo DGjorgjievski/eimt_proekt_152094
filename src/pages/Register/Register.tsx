@@ -118,7 +118,7 @@ export const Register = () => {
               style={{ color: "blue", marginRight: "15px" }}
             >
               <Link
-                href="/register"
+                href="/login"
                 className="col6"
                 style={{ textDecoration: "none" }}
               >
@@ -126,12 +126,7 @@ export const Register = () => {
               </Link>
             </Button>
             <Button variant="contained" type="submit" color="success">
-              <Link
-                href="/login"
-                style={{ textDecoration: "none", color: "#fff" }}
-              >
-                REGISTER
-              </Link>
+              REGISTER
             </Button>
           </Box>
         </form>

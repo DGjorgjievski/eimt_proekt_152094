@@ -41,7 +41,7 @@ const useStyles = makeStyles(() =>
 
 export const LocationModal = (props: ILocationModal) => {
   const classes = useStyles();
-
+  const userID = localStorage.getItem("UserID");
   const methods = useForm({
     reValidateMode: "onSubmit",
   });
@@ -52,7 +52,7 @@ export const LocationModal = (props: ILocationModal) => {
 
   const handleDateChange = (event: any) => {
     // event.preventDefault();
-    const date = event.$d.toISOString().split('Z')[0];
+    const date = event.$d.toISOString().split("Z")[0];
     // console.log("here",date)
     // const currentHours = String(date.getHours()).padStart(2, "0");
     // const currentMinutes = String(date.getMinutes()).padStart(2, "0");
@@ -76,7 +76,6 @@ export const LocationModal = (props: ILocationModal) => {
   };
 
   const onSubmit = (data: any) => {
-
     //     userId: number,
     // localName: string,
     // numberOfTables: number,
@@ -84,7 +83,7 @@ export const LocationModal = (props: ILocationModal) => {
     // isConfirmed: boolean
 
     const formData = {
-      userId: 1,
+      userId: userID,
       localName: props?.location?.name || "",
       numberOfTables: numberOfTables,
       dateTime: currentDate,
