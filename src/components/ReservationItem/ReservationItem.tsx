@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CardContent,
   Card,
@@ -8,11 +8,14 @@ import {
   Button,
 } from "@mui/material";
 import { Box, createStyles, makeStyles } from "@material-ui/core";
+import { deleteReservation, confirmReservation } from "../../pages/Home/Home.service";
 
 interface ICard {
   LocalName: string;
   dateTime: string;
   id: number;
+  confirmed: boolean;
+  handleChanges: () => void;
 }
 
 const useStyles = makeStyles(() =>
@@ -42,6 +45,24 @@ const useStyles = makeStyles(() =>
 
 export const ReservationItem = (props: ICard) => {
   const classes = useStyles();
+  const [confirm, setConfirm] = useState<number>();
+
+  const handleReservation = (type: any) => {
+      //0 -delete; 1-confirm
+      const formData = {
+        id: props.id
+      };
+
+      if(type == 0)
+      {
+        deleteReservation(formData);
+      }
+      else if (type == 1)
+      {
+        confirmReservation(formData);
+      }
+      props.handleChanges();
+  };
 
   return (
     <Box className={classes.tableItemContainer}>
@@ -59,6 +80,7 @@ export const ReservationItem = (props: ICard) => {
         onClick={() => {
           console.log(props.id);
           //Send POST to BE TO UPDATE RESERVATION
+          handleReservation(0);
         }}
       >
         Cancle Reservation
@@ -66,8 +88,10 @@ export const ReservationItem = (props: ICard) => {
       <Button
         size="small"
         color="primary"
+        disabled={props.confirmed == true}
         onClick={() => {
           console.log(props.id);
+          handleReservation(1);
           //Send POST to BE TO UPDATE RESERVATION
         }}
       >
