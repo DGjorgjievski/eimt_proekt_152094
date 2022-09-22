@@ -8,7 +8,7 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.5.0.RC1/5969af07fd73b202085e05339b1a82e2b28bd52e/mapstruct-processor-1.5.0.RC1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
         </processorPath>
-        <module name="LocalReservationApp.main" />
+        <module name="com.example.LocalReservationApp.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
