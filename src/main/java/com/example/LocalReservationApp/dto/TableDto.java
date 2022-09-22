@@ -8,8 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 public class TableDto {
 
-    private Long id;
-
     private Integer idNumber;
 
     private Integer chairNumber;

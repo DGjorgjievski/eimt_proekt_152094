@@ -13,18 +13,16 @@ public interface ReservationEntityMapper {
 
     default ReservationEntity toEntity(ReservationModel reservationModel) {
         return ReservationEntity.builder()
-                                .id(reservationModel.getId())
-                                .userId(reservationModel.getUserId())
-                                .localName(reservationModel.getLocalName())
-                                .numberOfTables(reservationModel.getNumberOfTables())
-                                .dateTime(reservationModel.getDateTime())
-                                .isConfirmed(reservationModel.getIsConfirmed())
-                                .build();
+                               .userId(reservationModel.getUserId())
+                               .localName(reservationModel.getLocalName())
+                               .numberOfTables(reservationModel.getNumberOfTables())
+                               .dateTime(reservationModel.getDateTime())
+                               .isConfirmed(reservationModel.getIsConfirmed())
+                               .build();
     }
 
     default ReservationModel toModel(ReservationEntity reservationEntity) {
         return ReservationModel.builder()
-                               .id(reservationEntity.getId())
                                .userId(reservationEntity.getUserId())
                                .localName(reservationEntity.getLocalName())
                                .numberOfTables(reservationEntity.getNumberOfTables())
@@ -35,7 +33,6 @@ public interface ReservationEntityMapper {
 
     default ReservationDto toDto(ReservationModel reservationModel) {
         return ReservationDto.builder()
-                             .id(reservationModel.getId())
                              .userId(reservationModel.getUserId())
                              .localName(reservationModel.getLocalName())
                              .numberOfTables(reservationModel.getNumberOfTables())

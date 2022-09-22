@@ -8,13 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 public class LocalModel {
 
-    private Long id;
-
     private String name;
 
     private String location;
 
     private Integer totalSpaces;
-
-    private String localImage;
 }

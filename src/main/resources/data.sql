@@ -1,12 +1,12 @@
 create sequence IF NOT EXISTS local_seq;
 
-CREATE TABLE IF NOT EXISTS local (id BIGINT NOT NULL, name VARCHAR(255), location VARCHAR(255), total_spaces INTEGER, local_image VARCHAR(5000));
+CREATE TABLE IF NOT EXISTS local (id BIGINT NOT NULL, name VARCHAR(255), location VARCHAR(255), total_spaces INTEGER);
 
-INSERT INTO local (id, name, location, total_spaces, local_image) VALUES (nextval('local_seq'), 'Cafe Li', 'Skopje', 1, 'https://www.google.com/search?q=restaurant+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjMzKr85Kb6AhUjElkFHUSOATcQ_AUoAXoECAEQAw&biw=2550&bih=1273&dpr=1#imgrc=xKyttau6iI9LLM');
-INSERT INTO local (id, name, location, total_spaces, local_image) VALUES (nextval('local_seq'), 'Circle', 'Skopje', 2, 'https://www.google.com/search?q=restaurant+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjMzKr85Kb6AhUjElkFHUSOATcQ_AUoAXoECAEQAw&biw=2550&bih=1273&dpr=1#imgrc=xKyttau6iI9LLM');
-INSERT INTO local (id, name, location, total_spaces, local_image) VALUES (nextval('local_seq'), 'Casa', 'Skopje', 2, 'https://www.google.com/search?q=restaurant+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjMzKr85Kb6AhUjElkFHUSOATcQ_AUoAXoECAEQAw&biw=2550&bih=1273&dpr=1#imgrc=xKyttau6iI9LLM');
-INSERT INTO local (id, name, location, total_spaces, local_image) VALUES (nextval('local_seq'), 'Cube', 'Skopje', 5, 'https://www.google.com/search?q=restaurant+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjMzKr85Kb6AhUjElkFHUSOATcQ_AUoAXoECAEQAw&biw=2550&bih=1273&dpr=1#imgrc=xKyttau6iI9LLM');
-INSERT INTO local (id, name, location, total_spaces, local_image) VALUES (nextval('local_seq'), 'Vox', 'Skopje', 7, 'https://www.google.com/search?q=restaurant+image&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjMzKr85Kb6AhUjElkFHUSOATcQ_AUoAXoECAEQAw&biw=2550&bih=1273&dpr=1#imgrc=xKyttau6iI9LLM');
+INSERT INTO local (id, name, location, total_spaces) VALUES (nextval('local_seq'), 'Cafe Li', 'Skopje', 1);
+INSERT INTO local (id, name, location, total_spaces) VALUES (nextval('local_seq'), 'Circle', 'Skopje', 2);
+INSERT INTO local (id, name, location, total_spaces) VALUES (nextval('local_seq'), 'Casa', 'Skopje', 2);
+INSERT INTO local (id, name, location, total_spaces) VALUES (nextval('local_seq'), 'Cube', 'Skopje', 5);
+INSERT INTO local (id, name, location, total_spaces) VALUES (nextval('local_seq'), 'Vox', 'Skopje', 7);
 
 create sequence IF NOT EXISTS user_seq;
 
