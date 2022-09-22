@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/users")
 @AllArgsConstructor
 @Validated
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     private final UserService userService;

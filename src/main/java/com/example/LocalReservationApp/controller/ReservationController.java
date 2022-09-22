@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Log4j2
 @RestController
 @RequestMapping("/api/reservations")
