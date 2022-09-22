@@ -20,7 +20,7 @@ export const makeReservation = async (data: any) => {
     const response = await axios.post(url, {
       ...data,
     });
-    return response;
+    return response.status;
   } catch (e: any) {
     console.log("ERROR", e);
   }

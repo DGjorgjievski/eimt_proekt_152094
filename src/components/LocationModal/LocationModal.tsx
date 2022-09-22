@@ -14,6 +14,8 @@ import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
 import { makeReservation } from "../../pages/Home/Home.service";
+import { debug } from "console";
+import { ok } from "assert";
 
 interface ILocationModal {
   location: LocationType | null;
@@ -50,30 +52,30 @@ export const LocationModal = (props: ILocationModal) => {
 
   const handleDateChange = (event: any) => {
     // event.preventDefault();
-    const date = new Date(event.$d.getTime());
-    const currentHours = String(date.getHours()).padStart(2, "0");
-    const currentMinutes = String(date.getMinutes()).padStart(2, "0");
+    const date = event.$d.toISOString().split('Z')[0];
+    // console.log("here",date)
+    // const currentHours = String(date.getHours()).padStart(2, "0");
+    // const currentMinutes = String(date.getMinutes()).padStart(2, "0");
 
-    // za dvocifreni e padStart ama ne mi uspeva
+    // // za dvocifreni e padStart ama ne mi uspeva
 
-    const currentMonth = String(date.getMonth()).padStart(2, "0");
-    const currentDay = String(date.getDate()).padStart(2, "0");
+    // const currentMonth = String(date.getMonth()).padStart(2, "0");
+    // const currentDay = String(date.getDate()).padStart(2, "0");
 
-    const newDate = date.getFullYear() + "-" + currentMonth + "-" + currentDay;
-    const newTime = currentHours + ":" + currentMinutes;
-
-    setCurrentDate(newDate + "T" + newTime);
-    setSelectedDate(event.$d);
+    // const newDate = date.getFullYear() + "-" + currentMonth + "-" + currentDay;
+    // const newTime = currentHours + ":" + currentMinutes;
+    // console.log("NEwDate", newTime);
+    setCurrentDate(date);
+    setSelectedDate(date);
   };
 
   const handleTableChange = (event: any) => {
     // event.preventDefault();
 
-    setNumberOfTables(event.target.value);
+    setNumberOfTables(Number(event.target.value));
   };
 
   const onSubmit = (data: any) => {
-    console.log("DATA", selectedDate, props.location, numberOfTables);
 
     //     userId: number,
     // localName: string,
@@ -90,6 +92,7 @@ export const LocationModal = (props: ILocationModal) => {
     };
     makeReservation(formData);
 
+    props.handleModal(1);
     // DISPATCH FUNCTION
     // console.log("SUBMIT", methods.getValues());
   };

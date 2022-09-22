@@ -32,7 +32,7 @@ export const LocationsList = () => {
             key={local.id}
             title={local.name}
             content={local.location}
-            image={local.image}
+            image={local.localImage}
             id={local.id}
             handleModal={handleModal}
           />
