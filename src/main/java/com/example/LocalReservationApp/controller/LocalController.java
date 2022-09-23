@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/locals")
 @AllArgsConstructor
 @Validated
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LocalController {
 
     private final LocalService localService;
