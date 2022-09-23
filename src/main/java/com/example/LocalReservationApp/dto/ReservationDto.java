@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ReservationDto {
 
+    private Long id;
+
     private Long userId;
 
     private  String localName;
